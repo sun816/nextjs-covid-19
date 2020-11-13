@@ -1,0 +1,134 @@
+html {
+  height: -webkit-fill-available;
+}
+
+.layout > header {
+  grid-area: header;
+  padding: var(--size-m) var(--size-m);
+}
+
+.layout > aside {
+  grid-area: sidebar;
+}
+
+.layout > main {
+  grid-area: main;
+}
+
+.layout > nav {
+  grid-area: bottomNav;
+  height: 44px;
+}
+
+.layout > nav ol {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.layout > nav .selected svg.icon{
+  stroke: var(--color-primary);
+}
+
+.layout {
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-gap: var(--grid-gap-m);
+}
+
+.layout-summary-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: var(--size-m);
+}
+
+/*
+phone: 600px;
+table: 1200px;
+desktop: 1920px;
+*/
+@media screen and (max-width: 1200px) {
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .layout-summary-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: var(--size-s);
+  }
+
+  .layout main { flex: 1; }
+
+  .icon-button {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .layout {
+    height: 100vh;
+    column-gap: 40px;
+    grid-template-rows: 60px auto;
+    grid-template-columns: clamp(310px, 20vw, 400px) 3fr;
+    grid-template-areas:
+      "header  header"
+      "sidebar main"
+  }
+  .layout-map {
+    grid-template-rows: 60px auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header header"
+      "main main"
+  }
+
+  .layout > aside, .layout > main { overflow: auto; }
+}
+
+.layout-area-charts-vertical {
+  height: 80vh;
+  /* height: -webkit-fill-available; */
+  /* grid-template-rows: 60px auto; */
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: auto clamp(250px, 15vw, 320px);
+  grid-template-areas:
+    "main-area-chart area-chart-1"
+    "main-area-chart area-chart-2"
+    "main-area-chart area-chart-3"
+    "main-area-chart area-chart-4"
+}
+
+.layout-area-charts-horizontal {
+  height: 80vh;
+  display: grid;
+  gap: 1.8rem;
+  grid-template-rows: clamp(140px, 8vw, 220px) 3fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "area-chart-1 area-chart-2 area-chart-3 area-chart-4"
+    "main-area-chart main-area-chart main-area-chart main-area-chart"
+}
+
+#main-area-chart { grid-area: main-area-chart; }
+#area-chart-1 { grid-area: area-chart-1; }
+#area-chart-2 { grid-area: area-chart-2; }
+#area-chart-3 { grid-area: area-chart-3; }
+
+@media screen and (max-width: 1200px) {
+  .layout-area-charts-vertical,
+  .layout-area-charts-horizontal {
+    gap: 1rem;
+    grid-template-rows: 15vh 15vh auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "area-chart-1 area-chart-2"
+    "area-chart-3 area-chart-4"
+    "main-area-chart main-area-chart"
+  }
+}
+
