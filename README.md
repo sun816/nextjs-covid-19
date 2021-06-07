@@ -28,3 +28,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## yml
+name: Trigger deployment
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+
+jobs:
+  build:
+    name: Trigger deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger webhook
+        run: curl -X POST ${{ secrets.VERCEL_TOKEN }}
