@@ -30,15 +30,16 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## yml
-name: Trigger deployment
-on:
-  schedule:
-    - cron: "0 */4 * * *"
+name: Trigger deployment  
+on:  
+  schedule:  
+    - cron: "0 */4 * * *"  
 
-jobs:
-  build:
-    name: Trigger deployment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger webhook
-        run: curl -X POST ${{ secrets.VERCEL_TOKEN }}
+jobs:  
+  build:  
+    name: Trigger deployment  
+    runs-on: ubuntu-latest   
+    steps:  
+      - name: Trigger webhook  
+        run: curl -X POST ${{ secrets.VERCEL_TOKEN }}  
+        
